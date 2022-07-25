@@ -18,13 +18,11 @@ import org.springframework.web.bind.annotation.RestController;
 import static java.lang.String.format;
 
 @RestController
-@RequestMapping("/download")
 public class FileDownloadController {
 
-	private static final String EXTERNAL_FILE_PATH = "/home/zorro";
+	private static final String EXTERNAL_FILE_PATH = "/home/zorro/Музыка/";
 
-	@RequestMapping("/file/{fileName}")
-//			":.+}")
+	@RequestMapping("/file/{fileName:.+}")
 	public void downloadPDFResource(HttpServletRequest request, HttpServletResponse response,
 			@PathVariable("fileName") String fileName) throws IOException {
 
@@ -51,10 +49,10 @@ public class FileDownloadController {
 			/**
 			 * Here we have mentioned it to show inline
 			 */
-//			response.setHeader("Content-Disposition", format("inline; filename=\"" + file.getName() + "\""));
+			response.setHeader("Content-Disposition", format("inline; filename=\"" + file.getName() + "\""));
 
 			 //Here we have mentioned it to show as attachment
-			 response.setHeader("Content-Disposition", String.format("attachment; filename=\"" + file.getName() + "\""));
+//			 response.setHeader("Content-Disposition", String.format("attachment; filename=\"" + file.getName() + "\""));
 
 			response.setContentLength((int) file.length());
 			InputStream inputStream = new BufferedInputStream(new FileInputStream(file));
