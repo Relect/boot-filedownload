@@ -20,9 +20,9 @@ import static java.lang.String.format;
 @RestController
 public class FileDownloadController {
 
-	private static final String EXTERNAL_FILE_PATH = "/home/zorro/Музыка/";
+	private static final String EXTERNAL_FILE_PATH = "/home/";
 
-	@RequestMapping("/file/{fileName:.+}")
+	@RequestMapping("/{fileName:.+}")
 	public void downloadPDFResource(HttpServletRequest request, HttpServletResponse response,
 			@PathVariable("fileName") String fileName) throws IOException {
 
