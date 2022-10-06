@@ -20,7 +20,7 @@ import static java.lang.String.format;
 @RestController
 public class FileDownloadController {
 
-	private static final String EXTERNAL_FILE_PATH = "/home/";
+	private static final String EXTERNAL_FILE_PATH = "/home/pupsik/Музыка/";
 
 	@RequestMapping("/{fileName:.+}")
 	public void downloadPDFResource(HttpServletRequest request, HttpServletResponse response,
