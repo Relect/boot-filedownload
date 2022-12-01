@@ -10,7 +10,10 @@ import java.net.URLConnection;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,7 +23,10 @@ import static java.lang.String.format;
 @RestController
 public class FileDownloadController {
 
+	private static final Logger LOGGER = LoggerFactory.getLogger(FileDownloadController.class);
+
 	private static final String EXTERNAL_FILE_PATH = "/home/pupsik/Музыка/";
+	private static int requestCount = 0;
 
 	@RequestMapping("/{fileName:.+}")
 	public void downloadPDFResource(HttpServletRequest request, HttpServletResponse response,
@@ -28,6 +34,9 @@ public class FileDownloadController {
 
 		File file = new File(EXTERNAL_FILE_PATH + fileName);
 		if (file.exists()) {
+
+			requestCount++;
+			LOGGER.info("Кол-во загрузок - {}", requestCount);
 
 			//get the mimetype
 			String mimeType = URLConnection.guessContentTypeFromName(file.getName());
@@ -58,5 +67,10 @@ public class FileDownloadController {
 			InputStream inputStream = new BufferedInputStream(new FileInputStream(file));
 			FileCopyUtils.copy(inputStream, response.getOutputStream());
 		}
+	}
+
+	@GetMapping("/exit")
+	public void stop() {
+		System.exit(0);
 	}
 }
