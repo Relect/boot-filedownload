@@ -36,7 +36,7 @@ public class FileDownloadController {
 		if (file.exists()) {
 
 			requestCount++;
-			LOGGER.info("Кол-во загрузок - {}", requestCount);
+			LOGGER.info("Кол-во загрузок: {}", requestCount);
 
 			//get the mimetype
 			String mimeType = URLConnection.guessContentTypeFromName(file.getName());
