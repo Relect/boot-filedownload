@@ -1,9 +1,7 @@
 /boot-filedownload.iml
 /.idea/.gitignore
-/target/classes/application.properties
 /.idea/compiler.xml
 /.idea/encodings.xml
-/target/classes/com/javainuse/controller/FileDownloadController.class
 /.idea/jarRepositories.xml
 /.idea/libraries/Maven__ch_qos_logback_logback_classic_1_1_7.xml
 /.idea/libraries/Maven__ch_qos_logback_logback_core_1_1_7.xml
@@ -44,5 +42,4 @@
 /.idea/libraries/Maven__org_yaml_snakeyaml_1_17.xml
 /.idea/misc.xml
 /.idea/modules.xml
-/target/classes/com/javainuse/SpringBootFileDownload.class
 /.idea/vcs.xml
